@@ -1,0 +1,45 @@
+@model ProductListViewModel
+
+<div class="container-fluid fruite py-5">
+    <div class="container py-5">
+        <h1 class="mb-4">Fresh fruits shop</h1>
+        <div class="row g-4">
+            <div class="col-lg-12">
+
+                <div class="row g-4">
+                    <div class="col-lg-3">
+                        <div class="row g-4">
+                            <div class="col-lg-12">
+
+                                @await Component.InvokeAsync("CategoryList")
+
+                            </div>
+                            <div class="col-lg-12">
+                                @await Component.InvokeAsync("ProductFilterMenu")
+                            </div>
+                            <div class="col-lg-12">
+                                <h4 class="mb-3">Son Eklenen Ürünler</h4>
+                                <div  products="" number="3"></div>
+                            </div>
+                            <div class="col-lg-12">
+                               <partial name="~/Views/Partials/_Banner.cshtml" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="row g-4 justify-content-center">
+
+                            @foreach (var product in Model.Products)
+                            {
+                                <partial model="product" name="~/Views/Partials/_ProductCard.cshtml" />
+                            }
+
+                            <!-- Pagination -->
+                            <div class="col-12" page-model="@Model.Pagination" page-action="Index"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

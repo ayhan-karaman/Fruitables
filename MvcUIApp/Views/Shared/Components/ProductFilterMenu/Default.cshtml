@@ -1,0 +1,21 @@
+<div class="mb-3">
+    <div class="my-2">
+    <form method="get" asp-controller="Product" asp-action="Index">
+        <input type="hidden" name="categoryId" value="@(Context.Request.Query[ "categoryId" ])" />
+        <div class="form-group my-2">
+            <input type="text" class="form-control p-3" name="SearchTerm" placeholder="Search" />
+        </div>
+        <div class="row d-flex justify-content-around">
+            <div class="col-6 form-group my-2">
+                <input type="text" class="form-control" name="MinPrice" placeholder="Min. Price" />
+            </div>
+            <div class="col-6 form-group my-2">
+                <input type="text" class="form-control" name="MaxPrice" placeholder="Max. Price" />
+            </div>
+        </div>
+        <div class="btn-group my-2 w-100">
+             <button type="submit" class="btn btn-sm w-100 btn-primary">Filter</button>
+        </div>
+    </form>
+</div>
+</div>
