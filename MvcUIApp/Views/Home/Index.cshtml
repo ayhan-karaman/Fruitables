@@ -1,11 +1,14 @@
-<!-- Hero Start -->
-@await Html.PartialAsync("~/Views/Shared/_Hero.cshtml")
-<!-- Hero End -->
+@section PageHeader
+{
+    <!-- Hero Start -->
+    @await Html.PartialAsync("~/Views/Shared/_Hero.cshtml")
+    <!-- Hero End -->
 
 
-<!-- Featurs Section Start -->
-@await Html.PartialAsync("~/Views/Shared/_Feature.cshtml")
-<!-- Featurs Section End -->
+    <!-- Featurs Section Start -->
+    @await Html.PartialAsync("~/Views/Shared/_Feature.cshtml")
+    <!-- Featurs Section End -->
+}
 
 
 <!-- Fruits Shop Start-->
@@ -1026,4 +1029,3 @@
     </div>
 </div>
 <!-- Tastimonial End -->
-

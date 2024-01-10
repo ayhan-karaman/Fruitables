@@ -36,7 +36,8 @@ namespace MvcUIApp.Infrastructure.TagHelpers
                 imgDiv.Attributes.Add("style", "width: 100px; height: 100px;");
                 TagBuilder img = new TagBuilder("img");
                 img.Attributes.Add("class", "img-fluid rounded");
-                img.Attributes.Add("src", $"{product.ImageUrl}");
+                img.Attributes.Add("src", $"/{product.ImageUrl}");
+                img.Attributes.Add("alt", $"{product.ImageUrl}");
                 imgDiv.InnerHtml.AppendHtml(img);
 
 

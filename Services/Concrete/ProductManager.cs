@@ -59,5 +59,10 @@ namespace Services.Concrete
                 throw new Exception("Product not found");
             return product;
         }
+
+        public Product GetByIdOneProduct(int id, bool tracking)
+        {
+            return GetOneProduct(id, tracking);
+        }
     }
 }

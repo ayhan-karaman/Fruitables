@@ -11,7 +11,6 @@ using Services.Contracts;
 
 namespace MvcUIApp.Controllers
 {
-    [Route("[controller]")]
     public class ProductController : Controller
     {
         private readonly IServiceManager _manager;
@@ -37,6 +36,12 @@ namespace MvcUIApp.Controllers
                 Pagination = pagination
             };
             return View(viewModel);
+        }
+   
+        public IActionResult ProductDetail([FromRoute] int id)
+        {
+            var product = _manager.Product.GetByIdOneProduct(id, false);
+            return View(product);
         }
     }
 }
