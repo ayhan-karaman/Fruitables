@@ -1,23 +1,27 @@
 @model Product
 
 <div class=" col-md-8 col-lg-8 col-xl-4">
-    <a asp-action="ProductDetail" asp-controller="Product" asp-route-id="@Model.Id">
+    <a data-toggle="tooltip" data-placement="top" title="Ürün Detayına Git" asp-action="ProductDetail" asp-controller="Product" asp-route-id="@Model.Id">
         <div class="rounded position-relative fruite-item">
             <div class="fruite-img">
                 <img src="img/fruite-item-5.jpg" class="img-fluid w-100 rounded-top" alt="">
             </div>
-            <a class="text-white bg-secondary  px-3 py-1 rounded position-absolute"
-                style="top: 10px; left: 10px;">Fruits
-            </a>
+            @* <a class="text-white bg-secondary  px-3 py-1 rounded position-absolute"
+                style="top: 10px; left: 10px;">
+            </a> *@
             <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                 <h4>@Model.Name</h4>
                 <p>@Model.CreatedAt.ToString("dd.MM.yyyy")</p>
                 <div class="d-flex justify-content-between flex-lg-wrap">
-                    <p class="text-dark fs-5 fw-bold mb-0">@Model.UnitPrice.ToString("F2") / Kg</p>
-                    <a href="#" class="btn border border-secondary  px-3 rounded-pill  text-primary"><i
-                            class="fa fa-shopping-bag me-2 text-primary"></i>Sepete Ekle</a>
+                    <p class="text-dark fs-5 fw-bold mb-0">@Model.UnitPrice.ToString("F2") ₺/Kg</p>
                     
-
+            <form id="@Model.Id"  asp-page="/CartModel" method="post">
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+                <button type="submit" class="btn border border-secondary  px-3 rounded-pill  text-primary">
+                    <i class="fa fa-shopping-bag me-2 text-primary"></i>Sepete Ekle
+                </button>
+            </form>
                 </div>
             </div>
         </div>

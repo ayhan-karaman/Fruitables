@@ -1,8 +1,13 @@
+
+
 <div class="container-fluid page-header py-5">
     <h1 class="text-center text-white display-6">@ViewData["Title"]</h1>
     <ol class="breadcrumb justify-content-center mb-0">
-        <li class="breadcrumb-item"><a href="#">@ViewData["Path"]</a></li>
-        @* <li class="breadcrumb-item"><a href="#">Pages</a></li>
-        <li class="breadcrumb-item active text-white">Shop Detail</li> *@
+        <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Ana Sayfa</a></li>
+        <li class="breadcrumb-item"><a asp-action="Index" asp-controller='@ViewData["Path"]'>
+             @ViewData["Title"]
+
+        </a></li>
+        
     </ol>
 </div>

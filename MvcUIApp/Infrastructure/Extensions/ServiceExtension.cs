@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Entities.Models;
 using Microsoft.EntityFrameworkCore;
+using MvcUIApp.Models;
 using Repositories;
 using Repositories.Concrete;
 using Repositories.Contracts;
@@ -32,5 +34,18 @@ namespace MvcUIApp.Infrastructure.Extensions
             services.AddScoped<ICategoryService, CategoryManager>();
             services.AddScoped<IProductService, ProductManager>();
         }
+
+        public static void ConfigureSession(this IServiceCollection services)
+        {
+            services.AddDistributedMemoryCache();
+            services.AddSession(options => {
+                options.Cookie.Name = "StroreApp.Session";
+                options.IdleTimeout = TimeSpan.FromMinutes(10);
+            });
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<Cart>(c => SessionCart.GetCart(c));
+
+        }
+
     }
 }
