@@ -104,8 +104,8 @@
                             @(Model.Cart.ComputeTotalValue() >  500 || Model.Cart.ComputeTotalValue() <=  0  ?   $"{Model.Cart.ComputeTotalValue()} ₺" : $"{Model.Cart.ComputeTotalValue() + 30} ₺")
                         </p>
                     </div>
-                    <button class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4"
-                        type="button">Alış Verişi Tamamla</button>
+                    <a asp-action="Checkout" asp-controller="Order" class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4"
+                        type="button">Alış Verişi Tamamla</a>
                 </div>
             </div>
         </div>

@@ -27,12 +27,14 @@ namespace MvcUIApp.Infrastructure.Extensions
             services.AddScoped<IRepositoryManager, RepositoryManager>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
         }
         public static void ConfigureServiceRegistiration(this IServiceCollection services)
         {
             services.AddScoped<IServiceManager, ServiceManager>();
             services.AddScoped<ICategoryService, CategoryManager>();
             services.AddScoped<IProductService, ProductManager>();
+            services.AddScoped<IOrderService, OrderManager>();
         }
 
         public static void ConfigureSession(this IServiceCollection services)

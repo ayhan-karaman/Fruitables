@@ -29,7 +29,18 @@ namespace Entities.Models
                 line.Quantity += quantity;
             }
         }
-
+        public virtual void DecreaseQuantity(Product product, int quantity)
+        {
+            CartLine? line = Lines.Where(x => x.Product.Id == product.Id).FirstOrDefault();
+            if(line is null)
+            {
+                throw new Exception("Ürün bulunamadı!");
+            }
+            else
+            {
+                  line.Quantity -= (line.Quantity - quantity) ;
+            }
+        }
         public virtual void RemoveItem(Product product)
         => Lines.RemoveAll(x => x.Product.Id == product.Id);
 

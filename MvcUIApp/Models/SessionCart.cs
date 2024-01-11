@@ -25,6 +25,11 @@ namespace MvcUIApp.Models
             base.AddItem(product, quantity);
             Session?.SetJson<SessionCart>("cart", this);
         }
+        public override void DecreaseQuantity(Product product, int quantity)
+        {
+            base.DecreaseQuantity(product, quantity);
+            Session?.SetJson<SessionCart>("cart", this);
+        }
         public override void Clear()
         {
             base.Clear();

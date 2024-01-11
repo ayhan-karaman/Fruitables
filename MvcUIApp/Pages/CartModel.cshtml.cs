@@ -27,15 +27,19 @@ namespace MvcUIApp.Pages
             ReturnUrl = returnUrl ?? "/";
         }
 
-        public IActionResult  OnPost(int id, string returnUrl)
+        public IActionResult  OnPost(int id, string returnUrl, int quantity = 1)
         {
              Product? product = _manager.Product.GetByIdOneProduct(id, false);
+            
              if(product is not null)
              {
-                Cart.AddItem(product, 1);
+                
+                Cart.AddItem(product, quantity);
              }
              return RedirectToPage(new {returnUrl = returnUrl});
         }
+
+        
 
         public IActionResult OnPostRemove(int id, string returnUrl)
         {

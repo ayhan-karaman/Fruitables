@@ -9,5 +9,6 @@ namespace Services.Contracts
     {
         ICategoryService Category { get; }
         IProductService Product { get; }
+        IOrderService Order { get; }
     }
 }
