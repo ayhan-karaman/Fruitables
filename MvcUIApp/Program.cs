@@ -5,7 +5,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
 builder.Services.ConfigureSession();
-
+builder.Services.ConfigureIdentity();
 builder.Services.ConfigureDbContext(builder.Configuration);
 builder.Services.ConfigureRepositoryRegistiration();
 builder.Services.ConfigureServiceRegistiration();

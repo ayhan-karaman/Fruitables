@@ -31,10 +31,10 @@
                                     @await Component.InvokeAsync("CartSummary")
                                 </span>
                             </a>
-                            <a data-toggle="tooltip" data-placement="top" title="Giriş Yap" href="#" class="my-auto me-4">
+                            <a data-toggle="tooltip" data-placement="top" title="Giriş Yap" asp-action="Login" asp-controller="Auth" class="my-auto me-4">
                                 <i class="fa-solid fa-right-to-bracket fa-2x"></i>
                             </a>
-                            <a data-toggle="tooltip" data-placement="top" title="Kayıt Ol" href="#" class="my-auto">
+                            <a data-toggle="tooltip" data-placement="top" title="Kayıt Ol" asp-action="Register" asp-controller="Auth" class="my-auto">
                                 <i class="fa-solid fa-user-plus fa-2x"></i>
                             </a>
                         </div>

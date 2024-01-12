@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Entities.Models;
+using Entities.Models.Identities;
 using Microsoft.EntityFrameworkCore;
 using MvcUIApp.Models;
 using Repositories;
@@ -22,6 +23,20 @@ namespace MvcUIApp.Infrastructure.Extensions
               });
         }
 
+        public static void ConfigureIdentity(this IServiceCollection services)
+        {
+             services.AddIdentity<AppUser, AppRole>(options => {
+                options.SignIn.RequireConfirmedAccount = false;
+                options.User.RequireUniqueEmail = true;
+                options.Password.RequireUppercase =false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireDigit = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequiredLength = 6;
+             })
+             .AddEntityFrameworkStores<RepositoryContext>();
+        }
+
         public static void ConfigureRepositoryRegistiration(this IServiceCollection services)
         {
             services.AddScoped<IRepositoryManager, RepositoryManager>();
@@ -35,6 +50,7 @@ namespace MvcUIApp.Infrastructure.Extensions
             services.AddScoped<ICategoryService, CategoryManager>();
             services.AddScoped<IProductService, ProductManager>();
             services.AddScoped<IOrderService, OrderManager>();
+            services.AddScoped<IAppUserService, AppUserManager>();
         }
 
         public static void ConfigureSession(this IServiceCollection services)

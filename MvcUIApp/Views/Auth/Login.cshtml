@@ -1,0 +1,72 @@
+@model LoginDto
+@{
+    Layout = "_AuthLayout";
+}
+
+<div class="container w-75 py-3">
+    <div class="p-5 bg-dark text-light rounded shadow">
+        <div class="row g-1">
+            <div class="col-lg-12 mb-3 d-flex justify-content-between align-items-center">
+                <h3 class="text-light">Kullanıcı Kayıt Sayfası</h3>
+                <h4>
+                 <a data-toggle="tooltip" data-placement="top" title="Ana Sayfaya Git" asp-action="Index" asp-controller="Home">
+                    <i class="fa-solid fa-home text-primary"></i>
+                 </a>
+                </h1>
+            </div>
+
+            <div class="col-lg-5 mt-4">
+                <form asp-action="Login" asp-controller="Auth">
+                    <div class="form-group">
+                        <label class="form-label" asp-for="Email">E Posta Adresiniz:</label>
+                        <input asp-for="Email" class="w-100 form-control  border-0 py-3 mb-3"
+                            placeholder="E Postanızı giriniz.">
+                        <span class="text-danger ms-2" asp-validation-for="Email"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" asp-for="Password">Şifreniz:</label>
+                        <div class="w-100 d-flex align-items-center">
+                            <input asp-for="Password" id="password-input" type="password"
+                                class="w-100 form-control border-0 py-3 mb-3" placeholder="Şifrenizi giriniz.">
+                            <i style="margin-left: -45px;" class="fa-solid fa-eye-slash text-dark py-3 mb-3 "
+                                id="togglePassword"></i>
+                        </div>
+
+                        <span class="text-danger ms-2" asp-validation-for="Password"></span>
+                    </div>
+
+
+                    <div class="text-center text-lg-start mt-4 pt-2">
+                        <button class="w-100 btn form-control border-secondary py-2 bg-white text-primary "
+                            type="submit">Giriş Yap</button>
+                        <p class="small fw-bold mt-2 pt-1 mb-0"> Bir hesabınız yok mu?
+                            <a asp-action="Register" class="link-danger">Kayıt ol</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-7 justify-content-center d-flex">
+                <img class="img-fluid" width="400" src="~/img/default.png" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        const togglePassword = document
+            .querySelector('#togglePassword');
+        const password = document.querySelector('#password-input');
+        togglePassword.addEventListener('click', (e) => {
+            // Toggle the type attribute using
+            // getAttribure() method
+            const type = password
+                .getAttribute('type') === 'password' ?
+                'text' : 'password';
+            password.setAttribute('type', type);
+            // Toggle the eye and bi-eye icon
+            e.target.classList.toggle('fa-eye')
+        });
+    </script>
+}
