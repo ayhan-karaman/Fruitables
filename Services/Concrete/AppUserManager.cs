@@ -4,9 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Entities.Dtos.IdentityDtos;
+using Entities.Models;
 using Entities.Models.Identities;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
+using Repositories.Contracts;
 using Services.Contracts;
 
 namespace Services.Concrete
@@ -61,6 +62,11 @@ namespace Services.Concrete
             appUserDto.AppUserRoles = new HashSet<string>(await _userManager.GetRolesAsync(user));
             return appUserDto;
             
+        }
+
+        public async Task<AppUser> GetOneByNameAppUserAsync(string userName)
+        {
+            return await GetOneAppUserAsync(userName);
         }
 
         public async Task UpdateAppUserAsync(AppUserDtoForUpdate appUserDto)

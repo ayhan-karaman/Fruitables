@@ -43,6 +43,7 @@ namespace MvcUIApp.Infrastructure.Extensions
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IAddressRepository, AddressRepository>();
         }
         public static void ConfigureServiceRegistiration(this IServiceCollection services)
         {
@@ -51,6 +52,7 @@ namespace MvcUIApp.Infrastructure.Extensions
             services.AddScoped<IProductService, ProductManager>();
             services.AddScoped<IOrderService, OrderManager>();
             services.AddScoped<IAppUserService, AppUserManager>();
+            services.AddScoped<IAddressService, AddressManager>();
         }
 
         public static void ConfigureSession(this IServiceCollection services)

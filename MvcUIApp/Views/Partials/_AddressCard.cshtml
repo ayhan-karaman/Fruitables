@@ -1,0 +1,14 @@
+@model Address
+
+<div class="form-check border w-100 shadow col-md-5 rounded p-2 my-2 mx-2">
+    <h4>@Model.Title </h4> 
+    
+    <input type="checkbox" name="Address" value="@Model"  class=" mx-2 form-check-input">
+    <label class="form-check-label">
+        @Model.Line
+    </label>
+    <div class="text-end w-100 px-3">
+        <h6>@Model.District/@Model.City</h6>
+        <h6 class="fw-bold">@Model.Country</h6>
+    </div>
+</div>

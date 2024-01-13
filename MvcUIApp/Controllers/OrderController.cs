@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Entities.Dtos.AddressDtos;
 using Entities.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using MvcUIApp.Models;
 using Services.Contracts;
 
 namespace MvcUIApp.Controllers
@@ -24,8 +26,11 @@ namespace MvcUIApp.Controllers
 
         public IActionResult Checkout()
         {
-            return View(new Order(){
-                 Lines = _cart.Lines
+            return View(new OrderViewModel(){
+                Order =  new(){Lines = _cart.Lines},
+                UserAddresses = _manager.Address.GetByUserAddresses(User.Identity.Name),
+                AddressDtoForInsertion = new AddressDtoForInsertion()
+               
             });
         }
 

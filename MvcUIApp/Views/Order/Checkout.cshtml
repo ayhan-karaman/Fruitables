@@ -1,4 +1,4 @@
-@model Order
+@model OrderViewModel
 @section PageHeader
 {
     <partial name="~/Views/Partials/_PageHeader.cshtml" />
@@ -7,55 +7,39 @@
 <div class="container-fluid py-5">
     <div class="container py-5">
         <h1 class="mb-4">Fatura Detayı</h1>
-        <form asp-action="Checkout" asp-controller="Order">
+        <form method="post" asp-action="Checkout" asp-controller="Order" >
             <div class="row g-5">
-                <div class="col-md-12 col-lg-6 col-xl-7">
+                <div class="col-md-12 col-lg-7 col-xl-7">
                     <div class="row">
-                        <div class="col-md-12 col-lg-6">
-                            <div class="form-item w-100">
-                                <label class="form-label my-3">Adı <sup>*</sup></label>
-                                <input asp-for="@Model.FirstName" type="text" class="form-control">
+                        <div class="accordion">
+                            <h4 class="ms-2"></h4>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header fw-bold">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#addresses" aria-expanded="true" aria-controls="addresses">
+                                        Adresler:
+                                    </button>
+                                </h2>
+                                <div id="addresses" class="accordion-collapse show collapse  px-3"
+                                    data-bs-parent="#addresses">
+
+                                    @foreach (var item in Model.UserAddresses)
+                                    {
+                                        <partial name="~/Views/Partials/_AddressCard.cshtml" model="item" />
+                                    }
+                                    <div class="text-end w-100 px-3 py-3">
+                                        <partial name="~/Views/Partials/_AddressAddFormModal.cshtml" model="@Model.AddressDtoForInsertion" />
+                                    </div>
+                                </div>
+
                             </div>
+
                         </div>
-                        <div class="col-md-12 col-lg-6">
-                            <div class="form-item w-100">
-                                <label class="form-label my-3">Soyadı<sup>*</sup></label>
-                                <input asp-for="@Model.LastName" type="text" class="form-control">
-                            </div>
-                        </div>
+
                     </div>
-                    <div class="form-item">
-                        <label asp-for="@Model.Address" class="form-label my-3">Adres<sup>*</sup></label>
-                        <input asp-for="@Model.Address" type="text" class="form-control">
-                    </div>
-                    
-                    <div class="form-item">
-                        <label asp-for="@Model.City" class="form-label my-3">Şehir<sup>*</sup></label>
-                        <input asp-for="@Model.City" type="text" class="form-control">
-                    </div>
-                    <div class="form-item">
-                        <label asp-for="@Model.Country" class="form-label my-3">Ülke<sup>*</sup></label>
-                        <input asp-for="@Model.Country" type="text" class="form-control">
-                    </div>
-                    <div class="form-item">
-                        <label asp-for="@Model.PostCode" class="form-label my-3">Posta Kodu<sup>*</sup></label>
-                        <input asp-for="@Model.PostCode" type="text" class="form-control">
-                    </div>
-                    <div class="form-item">
-                        <label asp-for="@Model.Mobile"  class="form-label my-3">Telefon<sup>*</sup></label>
-                        <input asp-for="@Model.Mobile" type="tel" class="form-control">
-                    </div>
-                    <div class="form-item">
-                        <label asp-for="@Model.Email" class="form-label my-3">E Posta<sup>*</sup></label>
-                        <input asp-for="@Model.Email" type="email" class="form-control">
-                    </div>
-                    
                     <hr>
-                    
-                    <div class="form-item">
-                        <textarea asp-for="@Model.Notes" name="text" class="form-control" spellcheck="false" cols="30" rows="11"
-                            placeholder="Oreder Notes (Optional)"></textarea>
-                    </div>
+
+
                 </div>
                 <div class="col-md-12 col-lg-6 col-xl-5">
                     <div class="table-responsive">
@@ -70,7 +54,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var item in Model.Lines ?? Enumerable.Empty<CartLine>())
+                                @foreach (var item in Model.Order.Lines ?? Enumerable.Empty<CartLine>())
                                 {
                                     <tr>
                                         <th scope="row">
@@ -96,7 +80,8 @@
                                     <td class="py-5"></td>
                                     <td class="py-5">
                                         <div class="py-3 border-bottom border-top">
-                                            <p class="mb-0 text-dark">@Model.Lines.Sum(x => x.Product.UnitPrice * x.Quantity) ₺</p>
+                                            <p class="mb-0 text-dark">@Model.Order.Lines.Sum(x => x.Product.UnitPrice *
+                                                x.Quantity) ₺</p>
                                         </div>
                                     </td>
                                 </tr>
@@ -105,7 +90,7 @@
                     </div>
 
                     <div class="row g-4 text-center align-items-center justify-content-center pt-4">
-                        <button type="submit"
+                        <button  type="submit"
                             class="btn border-secondary py-3 px-4 text-uppercase w-100 text-primary">Siparişi
                             tamamla</button>
                     </div>

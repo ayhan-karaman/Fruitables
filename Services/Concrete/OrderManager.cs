@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Entities.Models;
+using Microsoft.EntityFrameworkCore;
 using Repositories.Contracts;
 using Services.Contracts;
 
@@ -17,7 +18,8 @@ namespace Services.Concrete
             _manager = manager;
         }
 
-        public IQueryable<Order> Orders => _manager.OrderRepository.Orders;
+        public IQueryable<Order> Orders => _manager.OrderRepository.Orders
+        .Include(x => x.AppUser).Include(x => x.Address);
 
         public int NumberOfInProcess => _manager.OrderRepository.NumberOfInProcess;
 

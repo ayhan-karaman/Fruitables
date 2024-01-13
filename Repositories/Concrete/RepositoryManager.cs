@@ -12,13 +12,15 @@ namespace Repositories.Concrete
         private readonly IProductRepository _productRepository;
         private readonly ICategoryRepository _categoryRepository;
         private readonly IOrderRepository _orderRepository;
+        private readonly IAddressRepository _addressRepository;
 
-        public RepositoryManager(RepositoryContext context, IProductRepository productRepository, ICategoryRepository categoryRepository, IOrderRepository orderRepository)
+        public RepositoryManager(RepositoryContext context, IProductRepository productRepository, ICategoryRepository categoryRepository, IOrderRepository orderRepository, IAddressRepository addressRepository)
         {
             _context = context;
             _productRepository = productRepository;
             _categoryRepository = categoryRepository;
             _orderRepository = orderRepository;
+            _addressRepository = addressRepository;
         }
 
         public IProductRepository ProductRepository => _productRepository;
@@ -26,6 +28,8 @@ namespace Repositories.Concrete
         public ICategoryRepository CategoryRepository => _categoryRepository;
 
         public IOrderRepository OrderRepository => _orderRepository;
+
+        public IAddressRepository AddressRepository => _addressRepository;
 
         public void Save()
         => _context.SaveChanges();

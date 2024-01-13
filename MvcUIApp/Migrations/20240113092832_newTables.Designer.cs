@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Repositories;
@@ -11,9 +12,11 @@ using Repositories;
 namespace MvcUIApp.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    partial class RepositoryContextModelSnapshot : ModelSnapshot
+    [Migration("20240113092832_newTables")]
+    partial class newTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,9 +36,6 @@ namespace MvcUIApp.Migrations
                     b.Property<int>("AppUserId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("BuildingNumber")
-                        .HasColumnType("integer");
-
                     b.Property<string>("City")
                         .IsRequired()
                         .HasColumnType("text");
@@ -47,22 +47,7 @@ namespace MvcUIApp.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("District")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int>("HomeNumber")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Line")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<string>("PostalCode")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -137,23 +122,23 @@ namespace MvcUIApp.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2024, 1, 11, 11, 15, 18, 323, DateTimeKind.Utc).AddTicks(3130),
+                            CreatedAt = new DateTime(2024, 1, 11, 9, 28, 32, 480, DateTimeKind.Utc).AddTicks(8610),
                             Name = "Sebze",
                             Status = true,
-                            UpdatedAt = new DateTime(2024, 1, 12, 11, 15, 18, 323, DateTimeKind.Utc).AddTicks(3140)
+                            UpdatedAt = new DateTime(2024, 1, 12, 9, 28, 32, 480, DateTimeKind.Utc).AddTicks(8620)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2024, 1, 9, 11, 15, 18, 323, DateTimeKind.Utc).AddTicks(3140),
+                            CreatedAt = new DateTime(2024, 1, 9, 9, 28, 32, 480, DateTimeKind.Utc).AddTicks(8620),
                             Name = "Meyve",
                             Status = true,
-                            UpdatedAt = new DateTime(2024, 1, 10, 11, 15, 18, 323, DateTimeKind.Utc).AddTicks(3140)
+                            UpdatedAt = new DateTime(2024, 1, 10, 9, 28, 32, 480, DateTimeKind.Utc).AddTicks(8620)
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2024, 1, 10, 11, 15, 18, 323, DateTimeKind.Utc).AddTicks(3140),
+                            CreatedAt = new DateTime(2024, 1, 10, 9, 28, 32, 480, DateTimeKind.Utc).AddTicks(8620),
                             Name = "Yeşillik",
                             Status = true
                         });
@@ -375,31 +360,31 @@ namespace MvcUIApp.Migrations
                         {
                             Id = 1,
                             CategoryId = 2,
-                            CreatedAt = new DateTime(2024, 1, 8, 11, 15, 18, 323, DateTimeKind.Utc).AddTicks(4090),
+                            CreatedAt = new DateTime(2024, 1, 8, 9, 28, 32, 480, DateTimeKind.Utc).AddTicks(9570),
                             ImageUrl = "img/default.png",
                             Name = "Elma",
                             ShowCase = true,
                             UnitPrice = 29m,
                             UnitsInStock = 40m,
-                            UpdatedAt = new DateTime(2024, 1, 10, 11, 15, 18, 323, DateTimeKind.Utc).AddTicks(4090)
+                            UpdatedAt = new DateTime(2024, 1, 10, 9, 28, 32, 480, DateTimeKind.Utc).AddTicks(9580)
                         },
                         new
                         {
                             Id = 2,
                             CategoryId = 2,
-                            CreatedAt = new DateTime(2024, 1, 6, 11, 15, 18, 323, DateTimeKind.Utc).AddTicks(4090),
+                            CreatedAt = new DateTime(2024, 1, 6, 9, 28, 32, 480, DateTimeKind.Utc).AddTicks(9580),
                             ImageUrl = "img/default.png",
                             Name = "Portakal",
                             ShowCase = true,
                             UnitPrice = 19m,
                             UnitsInStock = 50m,
-                            UpdatedAt = new DateTime(2024, 1, 9, 11, 15, 18, 323, DateTimeKind.Utc).AddTicks(4090)
+                            UpdatedAt = new DateTime(2024, 1, 9, 9, 28, 32, 480, DateTimeKind.Utc).AddTicks(9580)
                         },
                         new
                         {
                             Id = 3,
                             CategoryId = 2,
-                            CreatedAt = new DateTime(2024, 1, 3, 11, 15, 18, 323, DateTimeKind.Utc).AddTicks(4100),
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 28, 32, 480, DateTimeKind.Utc).AddTicks(9580),
                             ImageUrl = "img/default.png",
                             Name = "Mandalina",
                             ShowCase = true,
@@ -410,7 +395,7 @@ namespace MvcUIApp.Migrations
                         {
                             Id = 4,
                             CategoryId = 1,
-                            CreatedAt = new DateTime(2024, 1, 3, 11, 15, 18, 323, DateTimeKind.Utc).AddTicks(4100),
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 28, 32, 480, DateTimeKind.Utc).AddTicks(9580),
                             ImageUrl = "img/default.png",
                             Name = "Patlıcan",
                             ShowCase = true,
@@ -421,7 +406,7 @@ namespace MvcUIApp.Migrations
                         {
                             Id = 5,
                             CategoryId = 1,
-                            CreatedAt = new DateTime(2024, 1, 10, 11, 15, 18, 323, DateTimeKind.Utc).AddTicks(4100),
+                            CreatedAt = new DateTime(2024, 1, 10, 9, 28, 32, 480, DateTimeKind.Utc).AddTicks(9580),
                             ImageUrl = "img/default.png",
                             Name = "Dolma biber",
                             ShowCase = true,
@@ -432,7 +417,7 @@ namespace MvcUIApp.Migrations
                         {
                             Id = 6,
                             CategoryId = 1,
-                            CreatedAt = new DateTime(2024, 1, 10, 11, 15, 18, 323, DateTimeKind.Utc).AddTicks(4100),
+                            CreatedAt = new DateTime(2024, 1, 10, 9, 28, 32, 480, DateTimeKind.Utc).AddTicks(9590),
                             ImageUrl = "img/default.png",
                             Name = "Patates",
                             ShowCase = true,
@@ -443,7 +428,7 @@ namespace MvcUIApp.Migrations
                         {
                             Id = 7,
                             CategoryId = 1,
-                            CreatedAt = new DateTime(2024, 1, 10, 11, 15, 18, 323, DateTimeKind.Utc).AddTicks(4100),
+                            CreatedAt = new DateTime(2024, 1, 10, 9, 28, 32, 480, DateTimeKind.Utc).AddTicks(9590),
                             ImageUrl = "img/default.png",
                             Name = "Brokoli",
                             ShowCase = true,
@@ -454,7 +439,7 @@ namespace MvcUIApp.Migrations
                         {
                             Id = 8,
                             CategoryId = 2,
-                            CreatedAt = new DateTime(2024, 1, 10, 11, 15, 18, 323, DateTimeKind.Utc).AddTicks(4100),
+                            CreatedAt = new DateTime(2024, 1, 10, 9, 28, 32, 480, DateTimeKind.Utc).AddTicks(9590),
                             ImageUrl = "img/default.png",
                             Name = "Muz",
                             ShowCase = true,
@@ -595,7 +580,7 @@ namespace MvcUIApp.Migrations
             modelBuilder.Entity("Entities.Models.Order", b =>
                 {
                     b.HasOne("Entities.Models.Address", "Address")
-                        .WithMany("Orders")
+                        .WithMany()
                         .HasForeignKey("AddressId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -671,11 +656,6 @@ namespace MvcUIApp.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Entities.Models.Address", b =>
-                {
-                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("Entities.Models.Category", b =>

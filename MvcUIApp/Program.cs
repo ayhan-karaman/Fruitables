@@ -28,4 +28,5 @@ app.UseEndpoints(endpoints => {
      endpoints.MapControllers();
 });
 app.ConfigureAndCheckMigration();
+app.ConfigureDefaultAdminUserAsync();
 app.Run();

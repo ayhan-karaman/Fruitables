@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Entities.Dtos.IdentityDtos;
+using Entities.Models;
 using Entities.Models.Identities;
 using Microsoft.AspNetCore.Identity;
 
@@ -12,6 +13,7 @@ namespace Services.Contracts
     {
         IEnumerable<AppRole> Roles { get; }
         IEnumerable<AppUser> GetAllAppUsers();
+        Task<AppUser> GetOneByNameAppUserAsync(string userName);
         Task<IdentityResult> CreateAppUserAsync(AppUserDtoForCreation appUserDto);
         Task UpdateAppUserAsync(AppUserDtoForUpdate appUserDto);
         Task<AppUserDtoForUpdate> GetOneAppUserForUpdateAsync(string userName);
