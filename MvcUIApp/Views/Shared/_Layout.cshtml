@@ -50,7 +50,7 @@
     @await Html.PartialAsync("_Modalsearch.cshtml")
     <!-- Modal Search End -->
     @await RenderSectionAsync("PageHeader", false)
-    <main>
+    <main >
         @RenderBody()
     </main>
 
@@ -182,6 +182,9 @@
              $('[data-toggle=tooltip]').tooltip();
         });
     </script>
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+     <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
 </body>
 
 </html>

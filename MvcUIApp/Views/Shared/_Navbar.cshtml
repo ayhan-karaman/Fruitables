@@ -25,18 +25,13 @@
                             <a class="nav-item nav-link" asp-page="/Contact">Contact</a>
                         </div>
                         <div class="d-flex m-3 me-0">
-                            <a  asp-page="/CartModel" data-toggle="tooltip" data-placement="top" title="Sepete Git" class="position-relative me-4 my-auto">
+                            <a  asp-page="/CartModel" asp-route-returnUrl="@Context.Request.PathAndQuery()" data-toggle="tooltip" data-placement="top" title="Sepete Git" class="position-relative me-4 my-auto">
                                 <i class="fa fa-shopping-bag fa-2x"></i>
                                 <span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style="top: -5px; left: 15px; height: 20px; min-width: 20px;">
                                     @await Component.InvokeAsync("CartSummary")
                                 </span>
                             </a>
-                            <a data-toggle="tooltip" data-placement="top" title="Giriş Yap" asp-action="Login" asp-controller="Auth" class="my-auto me-4">
-                                <i class="fa-solid fa-right-to-bracket fa-2x"></i>
-                            </a>
-                            <a data-toggle="tooltip" data-placement="top" title="Kayıt Ol" asp-action="Register" asp-controller="Auth" class="my-auto">
-                                <i class="fa-solid fa-user-plus fa-2x"></i>
-                            </a>
+                             <partial name="~/Views/Partials/_LoginMenu.cshtml" />
                         </div>
                     </div>
                 </nav>

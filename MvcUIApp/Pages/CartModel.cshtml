@@ -9,6 +9,20 @@
 }
 <div class="container-fluid py-5">
     <div class="container py-5">
+    @if(Model.Cart.Lines.Count() < 1)
+    {
+        <div class="container-fluid py-5">
+            <div class="container py-5">
+                <div class="text-center">
+                    <h6>Alış Veriş Sepetiniz Boş</h6>
+                    <p>Sipariş vermek için mağzamızı ziyaret edin.</p>
+                    <a class="btn btn-primary my-3"  asp-action="Index" asp-controller="Product" >Mağzaya Git</a>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
         <div class="table-responsive">
             <table class="table">
                 <thead>
@@ -109,5 +123,6 @@
                 </div>
             </div>
         </div>
+    }
     </div>
 </div>

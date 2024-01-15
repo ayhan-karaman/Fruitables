@@ -1,14 +1,24 @@
-@model Address
+@model IEnumerable<Address>
+@foreach (var item in Model)
+{
+    <div class="form-check border w-100 shadow col-md-5 rounded p-2 my-2 mx-2">
 
-<div class="form-check border w-100 shadow col-md-5 rounded p-2 my-2 mx-2">
-    <h4>@Model.Title </h4> 
-    
-    <input type="checkbox" name="Address" value="@Model"  class=" mx-2 form-check-input">
-    <label class="form-check-label">
-        @Model.Line
-    </label>
-    <div class="text-end w-100 px-3">
-        <h6>@Model.District/@Model.City</h6>
-        <h6 class="fw-bold">@Model.Country</h6>
+        <div class="d-flex justify-content-between">
+            <h4>@item.Title </h4>
+            <a data-url='@Url.Action($"EditAddress/{item.Id}")' style="cursor: pointer;" class="btn text-warning"
+                data-bs-toggle="modal" data-bs-target="#editAddress">
+                Güncelle
+            </a>
+        </div>
+
+        <input type="checkbox" name="AddressId" value="@item.Id" class=" mx-2 form-check-input">
+        <label class="form-check-label">
+            @item.Line
+        </label>
+        <div class="text-end w-100 px-3">
+            <h6>@item.District/@item.City</h6>
+            <h6 class="fw-bold">@item.Country</h6>
+        </div>
     </div>
-</div>
+
+}

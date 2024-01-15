@@ -8,5 +8,6 @@ namespace Entities.Dtos.AddressDtos
     public record AddressDtoForUpdate:AddressDto
     {
         public int Id { get; set; }
+        public string UserName { get; set; }
     }
 }

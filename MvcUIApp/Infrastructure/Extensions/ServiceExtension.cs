@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Entities.Models;
 using Entities.Models.Identities;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using MvcUIApp.Models;
 using Repositories;
@@ -19,7 +20,8 @@ namespace MvcUIApp.Infrastructure.Extensions
         public static void ConfigureDbContext(this IServiceCollection services, IConfiguration configuration)
         {
               services.AddDbContext<RepositoryContext>(options => {
-                 options.UseNpgsql(configuration.GetConnectionString("PostgreSQL"), b => b.MigrationsAssembly("MvcUIApp"));
+                options.UseNpgsql(configuration.GetConnectionString("PostgreSQL"), b => b.MigrationsAssembly("MvcUIApp"));
+                options.EnableSensitiveDataLogging(true);
               });
         }
 
@@ -35,7 +37,10 @@ namespace MvcUIApp.Infrastructure.Extensions
                 options.Password.RequiredLength = 6;
              })
              .AddEntityFrameworkStores<RepositoryContext>();
+             
         }
+
+        
 
         public static void ConfigureRepositoryRegistiration(this IServiceCollection services)
         {
@@ -65,6 +70,24 @@ namespace MvcUIApp.Infrastructure.Extensions
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<Cart>(c => SessionCart.GetCart(c));
 
+        }
+
+        public static void ConfigureRouting(this IServiceCollection services)
+        {
+            services.AddRouting(opt => {
+                opt.LowercaseUrls = true;
+                opt.AppendTrailingSlash = false;
+            });
+        }
+
+        public static void ConfigureApplicationCookie(this IServiceCollection services)
+        {
+            services.ConfigureApplicationCookie(opt => {
+                opt.LoginPath = new PathString("/Account/Login");
+                opt.ReturnUrlParameter =  CookieAuthenticationDefaults.ReturnUrlParameter;
+                opt.ExpireTimeSpan = TimeSpan.FromMinutes(10);
+                opt.AccessDeniedPath = new PathString("/Account/AccessDenied");
+            });
         }
 
     }

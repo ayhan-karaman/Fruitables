@@ -35,8 +35,10 @@ namespace MvcUIApp.Pages
              {
                 
                 Cart.AddItem(product, quantity);
+                
              }
-             return RedirectToPage(new {returnUrl = returnUrl});
+             //return RedirectToPage(new {returnUrl = returnUrl});
+             return Redirect(returnUrl);
         }
 
         

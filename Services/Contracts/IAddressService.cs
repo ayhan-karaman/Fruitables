@@ -10,6 +10,9 @@ namespace Services.Contracts
     public interface IAddressService
     {
         Task CreateUserAddToAddress(string userName, AddressDtoForInsertion addressDto);
+        Task UpdateUserToAddress(AddressDtoForUpdate addressDto);
         IEnumerable<Address> GetByUserAddresses(string userName);
+        AddressDtoForUpdate GetOneAddressDtoForUpdate(int id);
+        void DeleteOneAddress(int id);
     }
 }

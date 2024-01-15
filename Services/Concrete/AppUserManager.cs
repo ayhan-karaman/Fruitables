@@ -54,6 +54,13 @@ namespace Services.Concrete
             return _userManager.Users.ToList();
         }
 
+        public async Task<AppUserDtoForInformation> GetAppUserDtoForInformation(string userName)
+        {
+            AppUser? user = await GetOneAppUserAsync(userName);
+            AppUserDtoForInformation userDtoForInformation = _mapper.Map<AppUserDtoForInformation>(user);
+            return userDtoForInformation;
+        }
+
         public async Task<AppUserDtoForUpdate> GetOneAppUserForUpdateAsync(string userName)
         {
             AppUser user = await GetOneAppUserAsync(userName);
@@ -67,6 +74,14 @@ namespace Services.Concrete
         public async Task<AppUser> GetOneByNameAppUserAsync(string userName)
         {
             return await GetOneAppUserAsync(userName);
+        }
+
+        public async Task<IdentityResult> RegisterAppUserAsync(RegisterDto registerDto)
+        {
+            AppUserDtoForCreation appUserDtoForCreation = _mapper.Map<AppUserDtoForCreation>(registerDto);
+            appUserDtoForCreation.Roles = new HashSet<string>(){"User"};
+            var result =  await CreateAppUserAsync(appUserDtoForCreation);
+            return result;
         }
 
         public async Task UpdateAppUserAsync(AppUserDtoForUpdate appUserDto)

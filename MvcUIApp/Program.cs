@@ -1,3 +1,6 @@
+using System.Security.Claims;
+using Entities.Models.Identities;
+using Microsoft.AspNetCore.Identity;
 using MvcUIApp.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +10,9 @@ builder.Services.AddRazorPages();
 builder.Services.ConfigureSession();
 builder.Services.ConfigureIdentity();
 builder.Services.ConfigureDbContext(builder.Configuration);
+builder.Services.ConfigureRouting();
+builder.Services.ConfigureApplicationCookie();
+
 builder.Services.ConfigureRepositoryRegistiration();
 builder.Services.ConfigureServiceRegistiration();
 builder.Services.AddAutoMapper(typeof(Program));
@@ -19,6 +25,9 @@ app.UseSession();
 app.UseHttpsRedirection();
 app.UseRouting();
 
+app.UseAuthentication();
+app.UseAuthorization();
+
 app.UseEndpoints(endpoints => {
      
      endpoints.MapControllerRoute(name:"default", pattern:"{controller=Home}/{action=Index}/{id?}");
@@ -29,4 +38,6 @@ app.UseEndpoints(endpoints => {
 });
 app.ConfigureAndCheckMigration();
 app.ConfigureDefaultAdminUserAsync();
+
+
 app.Run();

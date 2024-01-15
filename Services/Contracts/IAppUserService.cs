@@ -14,7 +14,9 @@ namespace Services.Contracts
         IEnumerable<AppRole> Roles { get; }
         IEnumerable<AppUser> GetAllAppUsers();
         Task<AppUser> GetOneByNameAppUserAsync(string userName);
+        Task<AppUserDtoForInformation> GetAppUserDtoForInformation(string userName);
         Task<IdentityResult> CreateAppUserAsync(AppUserDtoForCreation appUserDto);
+        Task<IdentityResult> RegisterAppUserAsync(RegisterDto registerDto);
         Task UpdateAppUserAsync(AppUserDtoForUpdate appUserDto);
         Task<AppUserDtoForUpdate> GetOneAppUserForUpdateAsync(string userName);
         Task<IdentityResult> DeleteAppUserAsync(string userName);

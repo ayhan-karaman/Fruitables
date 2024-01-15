@@ -6,6 +6,8 @@ using Entities.Models.Identities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Repositories;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace MvcUIApp.Infrastructure.Extensions
 {
@@ -23,6 +25,8 @@ namespace MvcUIApp.Infrastructure.Extensions
                 context.Database.Migrate();
         }
 
+       
+      
         public static async void ConfigureDefaultAdminUserAsync(this IApplicationBuilder app)
         {
             const string adminUser = "Admin";

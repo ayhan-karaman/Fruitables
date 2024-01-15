@@ -3,16 +3,15 @@
 {
     <partial name="~/Views/Partials/_PageHeader.cshtml" />
 }
-
+<div id="placeHolderHere"></div>
 <div class="container-fluid py-5">
     <div class="container py-5">
         <h1 class="mb-4">Fatura Detayı</h1>
-        <form method="post" asp-action="Checkout" asp-controller="Order" >
+        <form method="post" asp-action="Checkout">
             <div class="row g-5">
                 <div class="col-md-12 col-lg-7 col-xl-7">
                     <div class="row">
                         <div class="accordion">
-                            <h4 class="ms-2"></h4>
                             <div class="accordion-item">
                                 <h2 class="accordion-header fw-bold">
                                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
@@ -23,23 +22,27 @@
                                 <div id="addresses" class="accordion-collapse show collapse  px-3"
                                     data-bs-parent="#addresses">
 
-                                    @foreach (var item in Model.UserAddresses)
-                                    {
-                                        <partial name="~/Views/Partials/_AddressCard.cshtml" model="item" />
-                                    }
+                                    <partial name="~/Views/Partials/_AddressCard.cshtml" for="UserAddresses" />
+
+
                                     <div class="text-end w-100 px-3 py-3">
-                                        <partial name="~/Views/Partials/_AddressAddFormModal.cshtml" model="@Model.AddressDtoForInsertion" />
+                                        <a type="button" data-url='@Url.Action($"AddAddress/")'
+                                            class="btn btn-outline-success" data-bs-toggle="modal"
+                                            data-bs-target="#addModal">
+                                            Adres Ekle
+                                        </a>
                                     </div>
                                 </div>
 
                             </div>
-
                         </div>
-
                     </div>
                     <hr>
-
-
+                    <div class="form-group">
+                        <textarea name="Notes" placeholder="Siparişnizle alakalı notlarınız!" cols="30" rows="10"
+                            class="form-control my-3"></textarea>
+                    </div>
+                    <input type="hidden" value="@User.Identity.Name" name="UserName" />
                 </div>
                 <div class="col-md-12 col-lg-6 col-xl-5">
                     <div class="table-responsive">
@@ -90,7 +93,7 @@
                     </div>
 
                     <div class="row g-4 text-center align-items-center justify-content-center pt-4">
-                        <button  type="submit"
+                        <button type="submit"
                             class="btn border-secondary py-3 px-4 text-uppercase w-100 text-primary">Siparişi
                             tamamla</button>
                     </div>
@@ -99,3 +102,25 @@
         </form>
     </div>
 </div>
+
+
+@section Scripts
+{
+
+    <script>
+
+        let placeHolderHere = $('#placeHolderHere');
+        $('a[data-bs-toggle="modal"]').click(function (event) {
+            let url = $(this).data('url');
+            let decodedUrl = decodeURIComponent(url);
+            $.get(decodedUrl).done(function (data) {
+                placeHolderHere.html(data);
+                placeHolderHere.find('.modal').modal('show')
+            })
+        })
+
+
+
+    </script>
+
+}

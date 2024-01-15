@@ -1,18 +1,37 @@
 @page
-@model MvcUIApp.Pages.Complete
 @{
     ViewData["Title"] = "Complete";
 }
 
-<div class="text-center">
-    <h6>Thanks</h6>
-    <p>Thanks for placing order #@OrderId</p>
-    <p>We'll ship yout goods as soon as possible.</p>
-    <a class="btn btn-primary" asp-action="Index" asp-controller="Home">Return to store</a>
+@section PageHeader
+{
+    <partial name="~/Views/Partials/_PageHeader.cshtml" />
+}
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        @if(OrderCode is not null)
+        {
+                <div class="text-center">
+                    <h6>Teşekkürler</h6>
+                    <p>Sipariş verdiğiniz için teşekkürler. #@OrderCode</p>
+                    <p>Ürünlerinizi mümkün olan en kısa sürede göndereceğiz..</p>
+                    <a class="btn btn-primary" asp-action="Index" asp-controller="Product">Mağzaya geri dön</a>
+                </div>
+        }
+        else 
+        {
+                <div class="text-center">
+                    <h6>Hatalı bir işlem gerçekleşti</h6>
+                    <a class="btn btn-primary" asp-action="Index" asp-controller="Product">Mağzaya geri dön</a>
+                </div>
+        
+        }
+    </div>
 </div>
-
 @functions
 {
     [BindProperty(SupportsGet = true)]
-    public string? OrderId { get; set; }
+    public string? OrderCode { get; set; }
+
+    
 }
