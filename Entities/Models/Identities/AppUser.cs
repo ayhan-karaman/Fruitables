@@ -13,6 +13,7 @@ namespace Entities.Models.Identities
        
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string? ImageUrl { get; set; }
 
         public IEnumerable<Address> Addresses { get; set; }
         public IEnumerable<Order> Orders { get; set; }

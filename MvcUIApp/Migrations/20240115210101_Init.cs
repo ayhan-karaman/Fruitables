@@ -37,6 +37,7 @@ namespace MvcUIApp.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     FirstName = table.Column<string>(type: "text", nullable: false),
                     LastName = table.Column<string>(type: "text", nullable: false),
+                    ImageUrl = table.Column<string>(type: "text", nullable: true),
                     UserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
@@ -307,9 +308,9 @@ namespace MvcUIApp.Migrations
                 columns: new[] { "Id", "created_at", "category_name", "category_status", "update_at" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 1, 12, 20, 24, 30, 132, DateTimeKind.Utc).AddTicks(6264), "Sebze", true, new DateTime(2024, 1, 13, 20, 24, 30, 132, DateTimeKind.Utc).AddTicks(6272) },
-                    { 2, new DateTime(2024, 1, 10, 20, 24, 30, 132, DateTimeKind.Utc).AddTicks(6278), "Meyve", true, new DateTime(2024, 1, 11, 20, 24, 30, 132, DateTimeKind.Utc).AddTicks(6279) },
-                    { 3, new DateTime(2024, 1, 11, 20, 24, 30, 132, DateTimeKind.Utc).AddTicks(6280), "Yeşillik", true, null }
+                    { 1, new DateTime(2024, 1, 13, 21, 1, 1, 222, DateTimeKind.Utc).AddTicks(6503), "Sebze", true, new DateTime(2024, 1, 14, 21, 1, 1, 222, DateTimeKind.Utc).AddTicks(6511) },
+                    { 2, new DateTime(2024, 1, 11, 21, 1, 1, 222, DateTimeKind.Utc).AddTicks(6517), "Meyve", true, new DateTime(2024, 1, 12, 21, 1, 1, 222, DateTimeKind.Utc).AddTicks(6517) },
+                    { 3, new DateTime(2024, 1, 12, 21, 1, 1, 222, DateTimeKind.Utc).AddTicks(6519), "Yeşillik", true, null }
                 });
 
             migrationBuilder.InsertData(
@@ -317,14 +318,14 @@ namespace MvcUIApp.Migrations
                 columns: new[] { "Id", "category_id", "created_at", "image_url", "product_name", "show_case", "unit_price", "units_in_stock", "update_at" },
                 values: new object[,]
                 {
-                    { 1, 2, new DateTime(2024, 1, 9, 20, 24, 30, 132, DateTimeKind.Utc).AddTicks(9534), "img/default.png", "Elma", true, 29m, 40m, new DateTime(2024, 1, 11, 20, 24, 30, 132, DateTimeKind.Utc).AddTicks(9537) },
-                    { 2, 2, new DateTime(2024, 1, 7, 20, 24, 30, 132, DateTimeKind.Utc).AddTicks(9540), "img/default.png", "Portakal", true, 19m, 50m, new DateTime(2024, 1, 10, 20, 24, 30, 132, DateTimeKind.Utc).AddTicks(9540) },
-                    { 3, 2, new DateTime(2024, 1, 4, 20, 24, 30, 132, DateTimeKind.Utc).AddTicks(9543), "img/default.png", "Mandalina", true, 19m, 37m, null },
-                    { 4, 1, new DateTime(2024, 1, 4, 20, 24, 30, 132, DateTimeKind.Utc).AddTicks(9545), "img/default.png", "Patlıcan", true, 39m, 107m, null },
-                    { 5, 1, new DateTime(2024, 1, 11, 20, 24, 30, 132, DateTimeKind.Utc).AddTicks(9547), "img/default.png", "Dolma biber", true, 49m, 87m, null },
-                    { 6, 1, new DateTime(2024, 1, 11, 20, 24, 30, 132, DateTimeKind.Utc).AddTicks(9549), "img/default.png", "Patates", true, 43m, 17m, null },
-                    { 7, 1, new DateTime(2024, 1, 11, 20, 24, 30, 132, DateTimeKind.Utc).AddTicks(9551), "img/default.png", "Brokoli", true, 73m, 57m, null },
-                    { 8, 2, new DateTime(2024, 1, 11, 20, 24, 30, 132, DateTimeKind.Utc).AddTicks(9553), "img/default.png", "Muz", true, 13m, 87m, null }
+                    { 1, 2, new DateTime(2024, 1, 10, 21, 1, 1, 222, DateTimeKind.Utc).AddTicks(9588), "img/default.png", "Elma", true, 29m, 40m, new DateTime(2024, 1, 12, 21, 1, 1, 222, DateTimeKind.Utc).AddTicks(9590) },
+                    { 2, 2, new DateTime(2024, 1, 8, 21, 1, 1, 222, DateTimeKind.Utc).AddTicks(9593), "img/default.png", "Portakal", true, 19m, 50m, new DateTime(2024, 1, 11, 21, 1, 1, 222, DateTimeKind.Utc).AddTicks(9594) },
+                    { 3, 2, new DateTime(2024, 1, 5, 21, 1, 1, 222, DateTimeKind.Utc).AddTicks(9596), "img/default.png", "Mandalina", true, 19m, 37m, null },
+                    { 4, 1, new DateTime(2024, 1, 5, 21, 1, 1, 222, DateTimeKind.Utc).AddTicks(9598), "img/default.png", "Patlıcan", true, 39m, 107m, null },
+                    { 5, 1, new DateTime(2024, 1, 12, 21, 1, 1, 222, DateTimeKind.Utc).AddTicks(9600), "img/default.png", "Dolma biber", true, 49m, 87m, null },
+                    { 6, 1, new DateTime(2024, 1, 12, 21, 1, 1, 222, DateTimeKind.Utc).AddTicks(9602), "img/default.png", "Patates", true, 43m, 17m, null },
+                    { 7, 1, new DateTime(2024, 1, 12, 21, 1, 1, 222, DateTimeKind.Utc).AddTicks(9604), "img/default.png", "Brokoli", true, 73m, 57m, null },
+                    { 8, 2, new DateTime(2024, 1, 12, 21, 1, 1, 222, DateTimeKind.Utc).AddTicks(9606), "img/default.png", "Muz", true, 13m, 87m, null }
                 });
 
             migrationBuilder.CreateIndex(

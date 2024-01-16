@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using Entities.Dtos.IdentityDtos;
@@ -9,6 +10,7 @@ using Entities.Models.Identities;
 using Microsoft.AspNetCore.Identity;
 using Repositories.Contracts;
 using Services.Contracts;
+using Services.Extensions;
 
 namespace Services.Concrete
 {
@@ -36,9 +38,14 @@ namespace Services.Concrete
             if(appUserDto.Roles.Count > 0)
             {
                 var roleResult = await _userManager.AddToRolesAsync(user, appUserDto.Roles);
+               
                 if(!roleResult.Succeeded)
                     throw new Exception("System have problems with roles.");
+                
             }
+            var claimResult =  await _userManager.AddClaimsAsync(user, SetClaims(user));
+            if(!claimResult.Succeeded)
+                    throw new Exception("System have problems with claims.");
 
             return result;
         }
@@ -109,6 +116,14 @@ namespace Services.Concrete
             throw new Exception("User could not be found");
         }
 
+        private IEnumerable<Claim> SetClaims(AppUser user)
+        {
+            var claims = new List<Claim>();
+            claims.AddFullName($"{user.FirstName} {user.LastName}");
+            claims.AddEmail(user.Email);
+            claims.AddAvatar(user.ImageUrl);
+            return claims;
+        }
        
     }
 }

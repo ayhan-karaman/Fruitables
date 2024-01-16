@@ -25,7 +25,7 @@ namespace MvcUIApp.Infrastructure.Extensions
                 context.Database.Migrate();
         }
 
-       
+        
       
         public static async void ConfigureDefaultAdminUserAsync(this IApplicationBuilder app)
         {
@@ -44,6 +44,7 @@ namespace MvcUIApp.Infrastructure.Extensions
             .ServiceProvider
             .GetRequiredService<RoleManager<AppRole>>();
 
+            
             AppUser? user = await userManager.FindByNameAsync(adminUser);
             if(user is null)
             {
@@ -54,6 +55,7 @@ namespace MvcUIApp.Infrastructure.Extensions
                     UserName = adminUser,
                     Email = "admin@admin.com",
                     PhoneNumber = "5351112233",
+                    ImageUrl = "/img/avatar.jpg"
                 };
                 var result = await userManager.CreateAsync(user, password);
                 
@@ -62,8 +64,17 @@ namespace MvcUIApp.Infrastructure.Extensions
                     throw new Exception("Admin user could not created!");
                 }
                 var roleResult = await userManager.AddToRolesAsync(user, roleManager.Roles.Select(x => x.Name).ToList());
+                
                 if(!roleResult.Succeeded)
                     throw new Exception("System have problems with role defination for Admin");
+
+                var claimResult = await userManager.AddClaimsAsync(user, new List<Claim>(){
+                     new Claim("FullName", $"{user.FirstName} {user.LastName}"),
+                     new Claim(ClaimTypes.Email, user.Email)
+                });
+
+                if(!claimResult.Succeeded)
+                    throw new Exception("System have problems with claim defination for Admin");
             }
         }
     }

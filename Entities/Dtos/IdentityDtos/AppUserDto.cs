@@ -24,6 +24,8 @@ namespace Entities.Dtos.IdentityDtos
         [Required(ErrorMessage = "Email bilgisi boş bırakılamaz!")]
         public string Email { get; init; }
 
+        public string? ImageUrl { get; set; } = "/img/avatar.jpg";
+
         [DataType(DataType.PhoneNumber, ErrorMessage = "Geçerli bir telefon numarası giriniz!")]
         public string? PhoneNumber { get; init; }
         public HashSet<string> Roles { get; set; } = new();

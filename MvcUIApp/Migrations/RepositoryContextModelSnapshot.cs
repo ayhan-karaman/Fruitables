@@ -137,23 +137,23 @@ namespace MvcUIApp.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2024, 1, 12, 20, 24, 30, 132, DateTimeKind.Utc).AddTicks(6264),
+                            CreatedAt = new DateTime(2024, 1, 13, 21, 1, 1, 222, DateTimeKind.Utc).AddTicks(6503),
                             Name = "Sebze",
                             Status = true,
-                            UpdatedAt = new DateTime(2024, 1, 13, 20, 24, 30, 132, DateTimeKind.Utc).AddTicks(6272)
+                            UpdatedAt = new DateTime(2024, 1, 14, 21, 1, 1, 222, DateTimeKind.Utc).AddTicks(6511)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2024, 1, 10, 20, 24, 30, 132, DateTimeKind.Utc).AddTicks(6278),
+                            CreatedAt = new DateTime(2024, 1, 11, 21, 1, 1, 222, DateTimeKind.Utc).AddTicks(6517),
                             Name = "Meyve",
                             Status = true,
-                            UpdatedAt = new DateTime(2024, 1, 11, 20, 24, 30, 132, DateTimeKind.Utc).AddTicks(6279)
+                            UpdatedAt = new DateTime(2024, 1, 12, 21, 1, 1, 222, DateTimeKind.Utc).AddTicks(6517)
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2024, 1, 11, 20, 24, 30, 132, DateTimeKind.Utc).AddTicks(6280),
+                            CreatedAt = new DateTime(2024, 1, 12, 21, 1, 1, 222, DateTimeKind.Utc).AddTicks(6519),
                             Name = "Yeşillik",
                             Status = true
                         });
@@ -232,6 +232,9 @@ namespace MvcUIApp.Migrations
 
                     b.Property<string>("FirstName")
                         .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("ImageUrl")
                         .HasColumnType("text");
 
                     b.Property<string>("LastName")
@@ -379,31 +382,31 @@ namespace MvcUIApp.Migrations
                         {
                             Id = 1,
                             CategoryId = 2,
-                            CreatedAt = new DateTime(2024, 1, 9, 20, 24, 30, 132, DateTimeKind.Utc).AddTicks(9534),
+                            CreatedAt = new DateTime(2024, 1, 10, 21, 1, 1, 222, DateTimeKind.Utc).AddTicks(9588),
                             ImageUrl = "img/default.png",
                             Name = "Elma",
                             ShowCase = true,
                             UnitPrice = 29m,
                             UnitsInStock = 40m,
-                            UpdatedAt = new DateTime(2024, 1, 11, 20, 24, 30, 132, DateTimeKind.Utc).AddTicks(9537)
+                            UpdatedAt = new DateTime(2024, 1, 12, 21, 1, 1, 222, DateTimeKind.Utc).AddTicks(9590)
                         },
                         new
                         {
                             Id = 2,
                             CategoryId = 2,
-                            CreatedAt = new DateTime(2024, 1, 7, 20, 24, 30, 132, DateTimeKind.Utc).AddTicks(9540),
+                            CreatedAt = new DateTime(2024, 1, 8, 21, 1, 1, 222, DateTimeKind.Utc).AddTicks(9593),
                             ImageUrl = "img/default.png",
                             Name = "Portakal",
                             ShowCase = true,
                             UnitPrice = 19m,
                             UnitsInStock = 50m,
-                            UpdatedAt = new DateTime(2024, 1, 10, 20, 24, 30, 132, DateTimeKind.Utc).AddTicks(9540)
+                            UpdatedAt = new DateTime(2024, 1, 11, 21, 1, 1, 222, DateTimeKind.Utc).AddTicks(9594)
                         },
                         new
                         {
                             Id = 3,
                             CategoryId = 2,
-                            CreatedAt = new DateTime(2024, 1, 4, 20, 24, 30, 132, DateTimeKind.Utc).AddTicks(9543),
+                            CreatedAt = new DateTime(2024, 1, 5, 21, 1, 1, 222, DateTimeKind.Utc).AddTicks(9596),
                             ImageUrl = "img/default.png",
                             Name = "Mandalina",
                             ShowCase = true,
@@ -414,7 +417,7 @@ namespace MvcUIApp.Migrations
                         {
                             Id = 4,
                             CategoryId = 1,
-                            CreatedAt = new DateTime(2024, 1, 4, 20, 24, 30, 132, DateTimeKind.Utc).AddTicks(9545),
+                            CreatedAt = new DateTime(2024, 1, 5, 21, 1, 1, 222, DateTimeKind.Utc).AddTicks(9598),
                             ImageUrl = "img/default.png",
                             Name = "Patlıcan",
                             ShowCase = true,
@@ -425,7 +428,7 @@ namespace MvcUIApp.Migrations
                         {
                             Id = 5,
                             CategoryId = 1,
-                            CreatedAt = new DateTime(2024, 1, 11, 20, 24, 30, 132, DateTimeKind.Utc).AddTicks(9547),
+                            CreatedAt = new DateTime(2024, 1, 12, 21, 1, 1, 222, DateTimeKind.Utc).AddTicks(9600),
                             ImageUrl = "img/default.png",
                             Name = "Dolma biber",
                             ShowCase = true,
@@ -436,7 +439,7 @@ namespace MvcUIApp.Migrations
                         {
                             Id = 6,
                             CategoryId = 1,
-                            CreatedAt = new DateTime(2024, 1, 11, 20, 24, 30, 132, DateTimeKind.Utc).AddTicks(9549),
+                            CreatedAt = new DateTime(2024, 1, 12, 21, 1, 1, 222, DateTimeKind.Utc).AddTicks(9602),
                             ImageUrl = "img/default.png",
                             Name = "Patates",
                             ShowCase = true,
@@ -447,7 +450,7 @@ namespace MvcUIApp.Migrations
                         {
                             Id = 7,
                             CategoryId = 1,
-                            CreatedAt = new DateTime(2024, 1, 11, 20, 24, 30, 132, DateTimeKind.Utc).AddTicks(9551),
+                            CreatedAt = new DateTime(2024, 1, 12, 21, 1, 1, 222, DateTimeKind.Utc).AddTicks(9604),
                             ImageUrl = "img/default.png",
                             Name = "Brokoli",
                             ShowCase = true,
@@ -458,7 +461,7 @@ namespace MvcUIApp.Migrations
                         {
                             Id = 8,
                             CategoryId = 2,
-                            CreatedAt = new DateTime(2024, 1, 11, 20, 24, 30, 132, DateTimeKind.Utc).AddTicks(9553),
+                            CreatedAt = new DateTime(2024, 1, 12, 21, 1, 1, 222, DateTimeKind.Utc).AddTicks(9606),
                             ImageUrl = "img/default.png",
                             Name = "Muz",
                             ShowCase = true,
