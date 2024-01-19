@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using Entities.Dtos.CategoryDtos;
 using Entities.Models;
 using Repositories.Contracts;
 using Services.Contracts;
@@ -11,14 +13,17 @@ namespace Services.Concrete
     public class CategoryManager : ICategoryService
     {
         private readonly IRepositoryManager _manager;
+        private readonly IMapper _mapper;
 
-        public CategoryManager(IRepositoryManager manager)
+        public CategoryManager(IRepositoryManager manager, IMapper mapper)
         {
             _manager = manager;
+            _mapper = mapper;
         }
 
-        public void CreateOneCategory(Category category)
+        public void CreateOneCategory(CategoryDtoForInsertion categoryDto)
         {
+            Category category = _mapper.Map<Category>(categoryDto);
             _manager.CategoryRepository.CreateEntity(category);
             _manager.Save();
         }
@@ -35,12 +40,17 @@ namespace Services.Concrete
             return _manager.CategoryRepository.FindAll(tracking).ToList();
         }
 
-        public void UpdateOneCategory(Category category)
+        public CategoryDtoForUpdate GetCategoryDtoForUpdate(int id)
         {
-            Category? category1 = GetOneCategory(category.Id, true);
-            category1.Name  = category.Name;
-            category1.Status = category.Status;
-            _manager.CategoryRepository.UpdateEntity(category1);
+            Category category = GetOneCategory(id, false);
+            return _mapper.Map<CategoryDtoForUpdate>(category);
+        }
+
+        public void UpdateOneCategory(CategoryDtoForUpdate categoryDto)
+        {
+            Category category = _mapper.Map<Category>(categoryDto);
+            _manager.CategoryRepository.UpdateEntity(category);
+            _manager.Save();
         }
 
         private Category GetOneCategory(int id, bool tracking)

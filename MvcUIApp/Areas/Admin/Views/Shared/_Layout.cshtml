@@ -21,7 +21,6 @@
 
     <!-- Libraries Stylesheet -->
     <link href="~/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="~/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
     <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css">
@@ -33,6 +32,7 @@
 
 <body>
     <div class="container-fluid position-relative bg-white d-flex p-0">
+   
         <!-- Spinner Start -->
        
         <!-- Spinner End -->
@@ -71,7 +71,9 @@
     <script src="~/lib/tempusdominus/js/moment-timezone.min.js"></script>
 
     <!-- Template Javascript -->
+    @await RenderSectionAsync("Scripts", required:false)
     <script src="~/js/admin_main.js"></script>
+    
 </body>
 
 </html>

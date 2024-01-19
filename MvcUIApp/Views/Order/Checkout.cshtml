@@ -110,6 +110,7 @@
     <script>
 
         let placeHolderHere = $('#placeHolderHere');
+
         $('a[data-bs-toggle="modal"]').click(function (event) {
             let url = $(this).data('url');
             let decodedUrl = decodeURIComponent(url);
@@ -118,9 +119,10 @@
                 placeHolderHere.find('.modal').modal('show')
             })
         })
-
-
-
+        placeHolderHere.on('click', 'button[data-bs-dismiss="modal"]', (e) => {
+             placeHolderHere.find('.modal.fade').remove('.modal.fade')
+        })
+       
     </script>
 
 }

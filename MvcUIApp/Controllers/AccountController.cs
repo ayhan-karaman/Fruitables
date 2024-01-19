@@ -77,5 +77,10 @@ namespace MvcUIApp.Controllers
             await _signInManager.SignOutAsync();
             return Redirect(ReturnUrl);
         }
+
+        public IActionResult AccessDenied([FromQuery(Name ="ReturnUrl")] string returnUrl)
+        {
+            return View();
+        }
     }
 }

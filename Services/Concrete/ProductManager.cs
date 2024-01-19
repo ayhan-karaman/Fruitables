@@ -64,5 +64,19 @@ namespace Services.Concrete
         {
             return GetOneProduct(id, tracking);
         }
+
+        public ProductDtoForUpdate GetOneProductForUpdate(int id)
+        {
+            Product product = GetByIdOneProduct(id, false);
+            ProductDtoForUpdate productDto = _mapper.Map<ProductDtoForUpdate>(product);
+            return productDto;
+        }
+
+        public void DeleteOneProduct(int id)
+        {
+            Product product = GetByIdOneProduct(id, true);
+            _manager.ProductRepository.DeleteEntity(product);
+            _manager.Save();
+        }
     }
 }

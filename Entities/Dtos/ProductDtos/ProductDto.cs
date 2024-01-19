@@ -9,9 +9,10 @@ namespace Entities.Dtos.ProductDtos
     {
        
         public string Name { get; init; }
-        public string? ImageUrl { get; init; }
+        
+        public string? ImageUrl { get; set; }
         public decimal UnitPrice { get; init; }
-        public bool ShowCase { get; init; }
+        public bool? ShowCase { get; init; }
         public decimal UnitsInStock { get; init; }
     }
 }

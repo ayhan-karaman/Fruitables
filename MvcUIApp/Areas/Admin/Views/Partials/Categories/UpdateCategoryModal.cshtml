@@ -1,0 +1,31 @@
+@model CategoryDtoForUpdate
+
+<div class="modal fade" id="updateCategory-@Model.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Kategoriyi Güncelle</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="@Model.Id">
+        <div class="modal-body">
+          <div class="form-group">
+            <label asp-for="Name" class="form-label">Kategori Adı:</label>
+            <input type="text" asp-for="Name" class="form-control">
+          </div>
+          <div class="form-check my-2 mx-2">
+            <input type="checkbox" asp-for="Status"
+              class="form-check-input">
+            <label class="form-check-label"> Durum: </label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+          <button asp-action="UpdateOneCategory" asp-controller="Category" asp-area="Admin" type="submit"
+            class="btn btn-success">Kaydet</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

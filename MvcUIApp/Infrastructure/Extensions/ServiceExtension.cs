@@ -87,6 +87,7 @@ namespace MvcUIApp.Infrastructure.Extensions
                 opt.ReturnUrlParameter =  CookieAuthenticationDefaults.ReturnUrlParameter;
                 opt.ExpireTimeSpan = TimeSpan.FromMinutes(10);
                 opt.AccessDeniedPath = new PathString("/Account/AccessDenied");
+              
             });
         }
 

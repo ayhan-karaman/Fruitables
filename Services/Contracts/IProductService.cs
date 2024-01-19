@@ -14,8 +14,10 @@ namespace Services.Contracts
         IEnumerable<Product> GetAllProductsWithDetails(ProductRequestParameter parameter);
         Product GetByIdOneProduct(int id, bool tracking);
         IEnumerable<Product> GetLatestProducts(int n, bool tracking);
+        ProductDtoForUpdate GetOneProductForUpdate(int id);
         void CreateOneProduct(ProductDtoForInsertion productDto);
         void UpdatOneProduct(ProductDtoForUpdate productDto);
+        void DeleteOneProduct(int id);
         
     }
 }
