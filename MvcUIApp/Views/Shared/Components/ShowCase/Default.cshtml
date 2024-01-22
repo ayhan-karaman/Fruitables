@@ -1,0 +1,7 @@
+@model IEnumerable<Product>
+
+                    @foreach (var product in Model)
+                    {
+                        <partial model="product" name="~/Views/Partials/_ProductCard.cshtml" />
+                    }
+               

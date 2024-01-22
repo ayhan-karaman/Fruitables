@@ -155,6 +155,7 @@
             responsive: true
         }
     });
+    ctx4.html(myChart4)
 
 
     // Pie Chart

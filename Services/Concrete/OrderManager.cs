@@ -39,11 +39,14 @@ namespace Services.Concrete
 
         public Order? GetOneOrder(int id)
         {
+         
            return _manager.OrderRepository.GetOneOrder(id);
         }
+       
 
         public async Task<string> SaveOrder(OrderDtoForInsertion orderDto)
         {
+        
             Order order = _mapper.Map<Order>(orderDto);
             AppUser appUser = await _appUserService.GetOneByNameAppUserAsync(orderDto.UserName);
          

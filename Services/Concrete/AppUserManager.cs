@@ -103,7 +103,7 @@ namespace Services.Concrete
             {
                 var userRoles = await _userManager.GetRolesAsync(user);
                 _ = await _userManager.RemoveFromRolesAsync(user, userRoles);
-                _ = await _userManager.AddToRolesAsync(user, appUserDto.Roles);
+                _ = await _userManager.AddToRolesAsync(user, appUserDto.AppUserRoles);
             }
         }
 

@@ -78,5 +78,10 @@ namespace Services.Concrete
             _manager.ProductRepository.DeleteEntity(product);
             _manager.Save();
         }
+
+        public IEnumerable<Product> GetShowcaseProducts(bool tracking)
+        {
+            return _manager.ProductRepository.GetShowcaseProducts(tracking);
+        }
     }
 }

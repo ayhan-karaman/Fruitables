@@ -10,5 +10,7 @@ namespace Repositories.Contracts
     public interface IProductRepository:IRepositoryBase<Product>
     {
         IEnumerable<Product> GetAllProductsWithDetails(ProductRequestParameter parameter);
+        IEnumerable<Product> GetShowcaseProducts(bool tracking);
+        
     }
 }

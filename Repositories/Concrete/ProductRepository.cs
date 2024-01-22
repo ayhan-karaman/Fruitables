@@ -24,5 +24,8 @@ namespace Repositories.Concrete
             .ToPaginate(parameter.PageNumber, parameter.PageSize)
             .ToList();
         }
+
+        public IEnumerable<Product> GetShowcaseProducts(bool tracking)
+         => FindAll(tracking).Where(x => x.ShowCase.Equals(true)).ToList();
     }
 }
